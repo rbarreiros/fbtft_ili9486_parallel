@@ -1,0 +1,35 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+	compatible = "brcm,bcm2835", "brcm,bcm2708", "brcm,bcm2709", "brcm,bcm2710";
+
+	fragment@0 {
+		   target = <&soc>;
+		   __overlay__ {
+		   	   ili9486 {
+					compatible = "ilitek,ili9486";
+					bgr;
+					fps = <25>;
+					width = <320>;
+					height = <480>;
+					rotate = <90>;
+					buswidth = <8>;
+					reset-gpios = <&gpio 17 1>;
+					dc-gpios = <&gpio  4 0>;
+					cs-gpios = <&gpio 27 1>;
+					wr-gpios = <&gpio 12 1>;
+					rd-gpios = <&gpio  1 1>;
+					db-gpios = <&gpio  9 0>,
+				   		   <&gpio 11 0>,
+			   	   		   <&gpio 18 0>,
+			   	   		   <&gpio 23 0>,
+			   	   		   <&gpio 24 0>,
+			   	   		   <&gpio 25 0>,
+			   	   		   <&gpio  8 0>,
+			   	   		   <&gpio  7 0>;
+					debug = <0>;
+			 };
+		};
+	};
+};
